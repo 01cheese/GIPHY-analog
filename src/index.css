@@ -1,13 +1,290 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.main-page {
+  padding: 2rem;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.search-wrapper {
+  width: 100%;
+  max-width: 1200px;
 }
+
+.login-reminder {
+  text-align: center;
+  margin: auto;
+  font-size: 1.2rem;
+  padding: 2rem;
+  color: #ccc;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/*---------------------------------------*/
+
+.saved-grid {
+  display: flex;
+  margin-left: -16px;
+  width: auto;
+}
+
+.saved-column {
+  padding-left: 16px;
+  background-clip: padding-box;
+}
+
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ===== Reset and Basics ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+
+}
+
+body {
+  background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* ===== NavBar ===== */
+.navbar {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff9ff3;
+}
+
+/* ===== MainMenu Dropdown ===== */
+.main-menu .menu-toggle {
+  background: transparent;
+  color: white;
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 60px;
+  left: 1rem;
+  background: #222;
+  border-radius: 6px;
+  padding: 0.3rem 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  border: 1px solid #333;
+}
+
+.menu-dropdown li {
+  list-style: none;
+}
+
+.menu-link {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: #eee;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.menu-link:hover {
+  background: #333;
+  color: #fff;
+}
+
+
+.menu-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.menu-link:hover {
+  background: #333;
+}
+
+/* ===== Buttons ===== */
+.btn, .search-buttons button, .btn-reset {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin: 0.3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+
+
+}
+
+.btn:hover, .search-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+  text-align: center;
+}
+
+.search-input input {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  border: none;
+  width: 60%;
+  max-width: 40vw;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-error {
+  border: 2px solid #ff6b6b;
+}
+
+.error-text {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+}
+
+/* ===== Gif Grid ===== */
+.my-masonry-grid {
+  display: -webkit-box; /* Safari */
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  margin-left: -1rem; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 1rem; /* gutter size */
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > div {
+  margin-bottom: 1rem;
+}
+
+.my-masonry-grid_column img.card {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.my-masonry-grid_column img.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+
+
+/* ===== Gif Dialog Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 30, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #1a1a2e;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  color: white;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+.modal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ===== Saved Gifs ===== */
+.saved-gif img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.saved-gif img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Titles and Typography ===== */
+h1, h2, h3, h4, h5 {
+  color: #ff9ff3;
+  text-align: center;
+}
+
+p, small {
+  color: #ccc;
+}
+
+/* ===== Responsive Fixes ===== */
+@media (max-width: 768px) {
+  .search-input input {
+    max-width: 100%;
+    width: 90%;
+  }
+
+  .menu-dropdown {
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+  }
+}
+
+
